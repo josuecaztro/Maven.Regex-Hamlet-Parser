@@ -23,7 +23,8 @@ public class HamletParser {
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine();
                 String newLine = changeHamlets(line);
-                result.append(newLine).append("\n");
+                String newestLine = changeHoratios(newLine);
+                result.append(newestLine).append("\n");
             }
 
             scanner.close();
@@ -38,12 +39,15 @@ public class HamletParser {
         return hamletData;
     }
 
-    public void createNewFile(){
+    public void createNewFile() {
         //creates a new file
         try {
             File myObj = new File("src/main/resources/newHamlet.txt");
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
+                FileWriter fw = new FileWriter(myObj);
+                fw.write(loadFile());
+                fw.close();
             } else {
                 System.out.println("File already exists.");
             }
@@ -82,24 +86,20 @@ public class HamletParser {
     }
 
     public String changeHamlets(String line){
-        Pattern pattern = Pattern.compile("Hamlet");
+        Pattern pattern = Pattern.compile("Hamlet", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(line);
         return matcher.replaceAll("Leon");
     }
 
     public String changeHoratios(String line){
-        Pattern pattern = Pattern.compile("Horatio");
+        Pattern pattern = Pattern.compile("Horatio", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(line);
         return matcher.replaceAll("Tariq");
     }
 
     public static void main(String[] args) throws IOException {
         HamletParser hp = new HamletParser();
-        System.out.println(hp.loadFile());
-//        File fileOne = new File("src/main/resources/hamlet.txt");
-//        File fileTwo = new File("src/main/resources/hamletCopy.txt");
-//
-//        hp.modifyToNewFile(fileOne, fileTwo);
+        hp.createNewFile();
 
 
     }
