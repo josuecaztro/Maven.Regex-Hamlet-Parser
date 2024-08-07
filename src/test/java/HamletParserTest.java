@@ -48,9 +48,39 @@ public class HamletParserTest {
 
     @Test
     public void testFindHoratio() {
+        Pattern pattern = Pattern.compile("horatio", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher("Is Horatio here?");
+        boolean horatioFound = matcher.find();
+
+        Assert.assertTrue(horatioFound);
+
     }
 
     @Test
     public void testFindHamlet() {
+        Pattern pattern = Pattern.compile("hamlet", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher("Is Hamlet here?");
+        boolean horatioFound = matcher.find();
+
+        Assert.assertTrue(horatioFound);
+    }
+
+    @Test
+    public void testDontFindHoratio() {
+        Pattern pattern = Pattern.compile("horatio", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher("Is Alice here?");
+        boolean horatioFound = matcher.find();
+
+        Assert.assertFalse(horatioFound);
+
+    }
+
+    @Test
+    public void testDontFindHamlet() {
+        Pattern pattern = Pattern.compile("hamlet", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher("Is Bob here?");
+        boolean horatioFound = matcher.find();
+
+        Assert.assertFalse(horatioFound);
     }
 }
