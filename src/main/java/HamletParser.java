@@ -57,33 +57,33 @@ public class HamletParser {
         }
     }
 
-    public void copyFileToFile(File a, File b) throws IOException {
-        FileInputStream in = new FileInputStream(a);
-        FileOutputStream out = new FileOutputStream(b);
-        try {
-            int n;
-            // read() function to read the
-            // byte of data
-            while ((n = in.read()) != -1) {
-                // write() function to write
-                // the byte of data
-                out.write(n);
-            }
-        }
-        finally {
-            if (in != null) {
-                // close() function to close the
-                // stream
-                in.close();
-            }
-            // close() function to close
-            // the stream
-            if (out != null) {
-                out.close();
-            }
-        }
-        System.out.println("File Copied");
-    }
+//    public void copyFileToFile(File a, File b) throws IOException {
+//        FileInputStream in = new FileInputStream(a);
+//        FileOutputStream out = new FileOutputStream(b);
+//        try {
+//            int n;
+//            // read() function to read the
+//            // byte of data
+//            while ((n = in.read()) != -1) {
+//                // write() function to write
+//                // the byte of data
+//                out.write(n);
+//            }
+//        }
+//        finally {
+//            if (in != null) {
+//                // close() function to close the
+//                // stream
+//                in.close();
+//            }
+//            // close() function to close
+//            // the stream
+//            if (out != null) {
+//                out.close();
+//            }
+//        }
+//        System.out.println("File Copied");
+//    }
 
     public String changeHamlets(String line){
         Pattern pattern = Pattern.compile("Hamlet", Pattern.CASE_INSENSITIVE);
